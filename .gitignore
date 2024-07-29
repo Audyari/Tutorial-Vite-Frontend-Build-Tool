@@ -1,0 +1,5 @@
+# Abaikan direktori yang dihasilkan secara otomatis
+bin/
+build/
+dist/
+node_modules/
