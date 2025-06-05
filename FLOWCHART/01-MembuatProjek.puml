@@ -1,0 +1,16 @@
+@startuml
+start
+
+:index.html dimuat di browser;
+:Eksekusi kode JavaScript dimulai;
+:Import modul getSayHello dari "./getSayHello.js";
+:Memanggil fungsi getSayHello("Audyari W");
+
+:getSayHello.js dieksekusi;
+:Parameter name = "Audyari W";
+:Menampilkan pesan "Hello Audyari W" ke console;
+
+:Eksekusi selesai;
+stop
+
+@enduml

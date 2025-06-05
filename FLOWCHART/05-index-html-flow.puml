@@ -1,0 +1,77 @@
+@startuml index.html Flow
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+title Index.html Application Flow
+
+start
+
+:index.html loads;
+
+:Initialize App;
+
+if (Initialize App) then (Success)
+  :Execute getGreeting();
+  note right
+    // JavaScript Module
+    console.log(getGreeting(...))
+  end note
+  
+  :Execute sayHello();
+  note right
+    // JavaScript Module
+    sayHello(...)
+  end note
+  
+  :Execute getSayGoodbye();
+  note right
+    // TypeScript Module
+    console.log(getSayGoodbye(...))
+  end note
+  
+  :Generate UUID;
+  note right
+    // UUID Generation
+    const uuid = uuidv4()
+  end note
+  
+  :Validate UUID;
+  note right
+    // UUID Validation
+    uuidValidate(uuid)
+  end note
+  
+  :Call uuidTesting();
+  note right
+    // Async UUID Testing
+    await uuidTesting()
+  end note
+  
+  :Generate & Validate UUID;
+  note right
+    // Using generateAndValidateUuid
+    const { id, isValid, version } = ...
+  end note
+  
+  :Log Results;
+  note right
+    // Console Output
+    console.log('Generated in index.html:', ...)
+  end note
+  
+  :Application Initialized;
+  note right: console.log('Application initialized')
+  
+  stop
+else (Error)
+  :Handle Error;
+  note right
+    // Error Handling
+    console.error('Error in application:', error)
+  end note
+  stop
+endif
+
+@enduml

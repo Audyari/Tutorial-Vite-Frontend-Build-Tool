@@ -10,15 +10,72 @@
 <body>
 
     <h1>Hello Vite!</h1>
+    <h1>Hello Vite!</h1>
 
 </body>
 
-<script type="module">
+<!-- index.html -->
+<script type="module" defer>
+  
+  // CSS import
+  import "./src/style/CSS/style.css";
 
-import { sayHello } from "./SayHello.js";
+  // JavaScript
+  import { getGreeting, sayHello } from "./src/javascript/getSayHello.js";
 
-sayHello("Audyari W");
+  // TypeScript
+  import { getSayGoodbye} from "./src/Typescript/say-goodbye";
+
+  // uuid Node Dependency TypeScript
+  import { v4 as uuidv4,
+    validate as uuidValidate,
+    version as uuidVersion } from 'uuid';
+ 
+  import { generateAndValidateUuid,
+    uuidTesting } from './src/Typescript/generateAndValidateUuid';
+
+
+ /**
+   * Main application entry point
+   */
+   async function initializeApp() {
+    try {
+      // 1. Contoh penggunaan fungsi dari getSayHello.js
+      console.log(getGreeting("Audyari W from JavaScript"));
+      sayHello("Audyari W Say Hello from JavaScript");
+      sayHello(""); // Contoh dengan string kosong
+      
+      // 2. Contoh penggunaan fungsi dari say-goodbye.ts
+      console.log(getSayGoodbye("Audyari W from TypeScript"));
+      
+      // 3. Contoh penggunaan UUID langsung
+      const uuid = uuidv4();
+      console.log("UUID v4 from index.html:", uuid);
+      console.log("UUID validation:", uuidValidate(uuid));
+      
+      // 4. Contoh penggunaan fungsi utilitas UUID
+      await uuidTesting();
+      
+      // 5. Contoh penggunaan generateAndValidateUuid
+      const { id, isValid, version } = generateAndValidateUuid();
+      console.log('Generated in index.html:', { id, isValid, version });
+      
+    } catch (error) {
+      console.error('Error in application:', error);
+      // Di production, Anda mungkin ingin menampilkan pesan error ke user
+      // showErrorToUser('Terjadi kesalahan. Silakan muat ulang halaman.');
+    } finally {
+      // Cleanup code (jika ada)
+      console.log('Application initialized');
+    }
+  }
+
+  // Start the application
+  initializeApp();
+  
 
 </script>
+
+
 
 </html>

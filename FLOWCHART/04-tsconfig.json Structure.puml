@@ -1,0 +1,19 @@
+@startuml tsconfig.json Structure
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+package "tsconfig.json" {
+  ["Compiler Options" \n----- \n- target: ES2020\n- module: ESNext\n- lib: ES2020, DOM\n- strict: true\n- moduleResolution: bundler]
+  
+  ["Include/Exclude" \n----- \n- src/**/*.ts\n- !node_modules]
+  
+  ["Type Checking" \n----- \n- noImplicitAny: true\n- strictNullChecks: true\n- noUnusedLocals: true]
+  
+  ["Module Resolution" \n----- \n- allowImportingTsExtensions\n- resolveJsonModule\n- isolatedModules]
+  
+  ["Paths" \n----- \nbaseUrl: .\npaths: @/* -> src/*]
+}
+
+@enduml
